@@ -1,0 +1,20 @@
+{% extends "oms/oms_base.html" %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <h1>Welcome to the "{{product_detail.name}}" details page</h1><br>
+        <h2>Product details:</h2><br>
+        <p><strong>Name:</strong> {{product_detail.name}}</p>
+        <p><strong>Price:</strong> {{product_detail.price}}</p>
+        <p><strong>Quantity:</strong> {{product_detail.quantity}}</p>
+        <p><strong>Added:</strong> {{product_detail.timestamp}}</p>
+        <p><strong>Active: </strong>{{product_detail.active}}</p>
+        <p><strong>Description:</strong> {{product_detail.description}}</p>
+        <p><strong>Last modified:</strong> {{product_detail.modified_date}}</p>
+    </div>
+
+    <div class="container">
+        <p> <a class = 'btn btn-warning' href="{% url 'oms:product_update' pk=product_detail.pk %}">Update</a></p>
+        <p> <a class = 'btn btn-danger' href="{% url 'oms:product_delete' pk=product_detail.pk %}">Delete</a></p>
+    </div>
+{% endblock %}

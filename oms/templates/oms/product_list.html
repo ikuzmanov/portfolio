@@ -1,0 +1,48 @@
+{% extends "oms/oms_base.html" %}
+{% block body_block %}
+<h1>Welcome to list of all products</h1>
+<a class = 'btn btn-success btn-sm 'href="{% url 'oms:product_create'%}">Create new product</a><p>
+    <table style="font-size:14px;" class="table table-hover" style='width:100%'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Added</th>
+                <th>Last modified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td> <a href="{{product.id}}">{{product.name}}</a></td>
+                <td> ${{product.price}} </td>
+                <td> {{product.quantity}} </td>
+                <td> {{product.description}} </td>
+                <td> {{product.active}} </td>
+                <td> {{product.timestamp}} </td>
+                <td> {{product.modified_date}} </td>
+                <td>
+                    <a class = 'btn btn-warning btn-sm' href="{% url 'oms:product_update' pk=product.pk %}">Update</a>
+                    <a class = 'btn btn-danger btn-sm' href="{% url 'oms:product_delete' pk=product.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+           <tr>
+               <th>Name</th>
+               <th>Price</th>
+               <th>Quantity</th>
+               <th>Description</th>
+               <th>Active</th>
+               <th>Added</th>
+               <th>Last modified</th>
+               <th>Actions</th>
+           </tr>
+       </tfoot>
+    </table>
+{% endblock %}

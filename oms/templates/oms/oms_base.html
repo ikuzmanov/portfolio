@@ -1,0 +1,78 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Restaurant Admin</title>
+  </head>
+  <body style='background-color: #f4f7fc;'>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e6e91;">
+  <a class="navbar-brand" href="{% url 'oms:index' %}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin:index'%}">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'oms:product_list'%}">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+  </div>
+</nav>
+<p></p>
+      <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to the Restaurant Management System</h1>
+        </div>
+        {% block body_block %}
+        <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                  <img class="card-img-top" src="https://images.yourstory.com/2016/08/125-fall-in-love.png" height="150" width="50" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Products</h5>
+                  <p class="card-text">In this section you can administrate your product list.</p>
+                  <a href="{% url 'oms:product_list'%}" class="btn btn-primary">Go ahead</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <img class="card-img-top" src="https://www.ophtek.com/wp-content/uploads/2016/05/Insider_Threat.jpg" height="150" width="50" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Employees</h5>
+                  <p class="card-text">Here you could administrate your employees</p>
+                  <a href="#" class="btn btn-primary">Go ahead</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top" src="data:image/png;base64,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" height="150" width="50" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Sales and Orders</h5>
+                <p class="card-text">Manage your orders is not longer a nightmare</p>
+                <a href="#" class="btn btn-primary">Go ahead</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </script>
+  </body>
+</html>

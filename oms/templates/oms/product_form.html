@@ -1,0 +1,18 @@
+{% extends "oms/oms_base.html" %}
+{% block body_block %}
+{% load bootstrap4 %}
+<h1>
+{% if not form.instance.pk %}
+Create Product
+{% else%}
+Update Product
+{% endif %}
+</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form layout='inline'  %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}
