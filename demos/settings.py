@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'oms',
-    'bootstrap4'
+    'blog',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'demos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,STATIC_DIR,],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'EET'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -138,3 +139,7 @@ STATICFILES_DIRS = [STATIC_DIR,]
 #media
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+#Login links
+
+LOGIN_REDIRECT_URL = '/blog/'
