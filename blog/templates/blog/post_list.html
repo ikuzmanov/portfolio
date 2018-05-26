@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="centerstage">
-
-
     {% for post in post_list %}
-        <div class="post">
+        <div class="post jumbotron">
+            <div class="container">
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                <h2>{{ post.text|safe|truncatechars:100 }}</h2>
+                <p><span class="glyphicon glyphicon-calendar"></span> {{ post.published_date|date:"d-m-y"}}</p>
+                <p><span class="glyphicon glyphicon-user"></span> {{post.author}}</p>
+                <a href="{% url 'post_detail' pk=post.pk %}"><button class="btn btn-primary"> Comments <span class="badge">{{ post.approve_comments.count }}</span></button> </a>
 
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <div class="date">
-                <p>Published on: {{ post.published_date|date:"D M Y"}}</p>
             </div>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
         </div>
     {% endfor %}
 </div>
