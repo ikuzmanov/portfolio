@@ -25,7 +25,7 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '9*hmza^q$@1a!=boymaw_z1!tqe^5m&)f6oh94@u4tyuptxcqs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ikuzmanov.pythonanywhere.com', '127.0.0.1']
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'oms',
     'blog',
     'bootstrap4',
+    'django_countries',
 ]
 
 MIDDLEWARE = [

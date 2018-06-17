@@ -1,0 +1,18 @@
+{% extends "oms/oms_base.html" %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <h1>Welcome to the "{{order_detail.id}}" details page</h1><br>
+        <h2>Order details:</h2><br>
+        <p><strong>Assigned to:</strong> {{order_detail.assigned}}</p>
+        <p><strong>Status:</strong> {{order_detail.status}}</p>
+        <p><strong>Product:</strong> {{order_detail.product}}</p>
+        <p><strong>Table:</strong> {{order_detail.table}}</p>
+        <p><strong>Timestamp:</strong> {{order_detail.timestamp}}</p>
+        <p><strong>Due by: </strong>{{order_detail.due_date}}</p>
+    </div>
+    <div class="container">
+        <p> <a class = 'btn btn-warning' href="{% url 'oms:order_update' pk=order_detail.pk %}">Update</a></p>
+        <p> <a class = 'btn btn-danger' href="{% url 'oms:order_delete' pk=order_detail.pk %}">Delete</a></p>
+    </div>
+{% endblock %}

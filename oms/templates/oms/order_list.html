@@ -1,0 +1,51 @@
+{% extends "oms/oms_base.html" %}
+{% block body_block %}
+<h1>Welcome to list of all orders</h1>
+<div class="container">
+    <a class = 'btn btn-success btn-sm 'href="{% url 'oms:order_create'%}">Create new order</a>
+    <a class = 'btn btn-warning btn-sm 'href="{% url 'oms:assigned_order_list'%}">View assigned orders</a>
+    <a class = 'btn btn-warning btn-sm 'href="{% url 'oms:new_order_list'%}">View new orders</a>
+    <a class = 'btn btn-warning btn-sm 'href="{% url 'oms:finished_order_list'%}">View finished orders</a>
+    <br></br>
+</div>
+    <table style="font-size:14px;" class="table table-hover" style='width:100%'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Assigned to</th>
+                <th>Status</th>
+                <th>Table</th>
+                <th>Timestamp</th>
+                <th>Due by</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td> <a href="{{order.id}}">{{order.id}}</a></td>
+                <td> {{order.assigned}}
+                <td> {{order.status}} </td>
+                <td> {{order.table}} </td>
+                <td> {{order.timestamp}} </td>
+                <td> {{order.due_date}} </td>
+                <td>
+                    <a class = 'btn btn-warning btn-sm' href="{% url 'oms:order_update' pk=order.pk %}">Update</a>
+                    <a class = 'btn btn-danger btn-sm' href="{% url 'oms:order_delete' pk=order.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Assigned to</th>
+                <th>Status</th>
+                <th>Table</th>
+                <th>Timestamp</th>
+                <th>Due by</th>
+                <th>Action</th>
+            </tr>
+       </tfoot>
+    </table>
+{% endblock %}

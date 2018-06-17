@@ -8,8 +8,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Restaurant Admin</title>
   </head>
-  <body style='background-color: #f4f7fc;'>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e6e91;">
+  <script type="text/javascript">
+  	function startTime()
+  	{
+  	var d=new Date();
+  	var T = d.getDate();
+  	var M = d.getMonth()+1;
+  	var J = d.getFullYear();
+  	var d=new Date();
+  	var today=new Date();
+  	var h=today.getHours();
+  	var m=today.getMinutes();
+  	var s=today.getSeconds();
+  	T=checkTime(T);
+  	M=checkTime(M);
+  	m=checkTime(m);
+  	s=checkTime(s);
+  	document.getElementById('txt').innerHTML=T+"/"+M+"/"+J+" "+h+":"+m+":"+s;
+  	t=setTimeout('startTime()',500);
+  	}
+  	function checkTime(i)
+  	{
+  	if (i<10)
+  	 {
+  	 i="0" + i;
+  	 }
+  	return i;
+  	}
+  </script>
+  <body onload="startTime()" style='background-color: #f4f7fc;'>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e6e91;">
   <a class="navbar-brand" href="{% url 'oms:index' %}">Client Logo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,10 +51,10 @@
             <a class="nav-link" href="{% url 'oms:product_list'%}">Products</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'oms:product_list'%}">Employees</a>
+            <a class="nav-link" href="{% url 'oms:employee_list'%}">Employees</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'oms:product_list'%}">Sales & Orders</a>
+            <a class="nav-link" href="{% url 'oms:order_list'%}">Sales & Orders</a>
         </li>
     </ul>
   </div>
@@ -35,6 +63,7 @@
       <div class="container">
         <div class="jumbotron">
             <h1>Welcome to the Restaurant Management System</h1>
+                  <div id="txt"><hr noshade width="30" size="2" align="left"></div><br>
         </div>
         {% block body_block %}
         <div class="row">
@@ -44,7 +73,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Products</h5>
                   <p class="card-text">In this section you can administrate your product list.</p>
-                  <a href="{% url 'oms:product_list'%}" class="btn btn-primary">Go ahead</a>
+                  <a href="{% url 'oms:product_list' %}" class="btn btn-primary">Go ahead</a>
                 </div>
               </div>
             </div>
@@ -54,7 +83,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Employees</h5>
                   <p class="card-text">Here you could administrate your employees</p>
-                  <a href="#" class="btn btn-primary">Go ahead</a>
+                  <a href="{% url 'oms:employee_list' %}" class="btn btn-primary">Go ahead</a>
                 </div>
               </div>
             </div>
@@ -64,7 +93,7 @@
               <div class="card-body">
                 <h5 class="card-title">Sales and Orders</h5>
                 <p class="card-text">Manage your orders is not longer a nightmare</p>
-                <a href="#" class="btn btn-primary">Go ahead</a>
+                <a href="{% url 'oms:order_list' %}" class="btn btn-primary">Go ahead</a>
               </div>
             </div>
           </div>
